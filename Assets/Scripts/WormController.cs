@@ -11,14 +11,15 @@ public class WormController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(x > 0)
+        /*
+        if(x > 10)
         {
-            Debug.Log("x ist größer als 0");
+            Debug.Log("x ist größer als 10");
 
         }
         else
         {
-            Debug.Log("x ist kleiner als 0");
+            Debug.Log("x ist kleiner als 10");
         }
 
         if(text == "DEJAN"){
@@ -28,6 +29,16 @@ public class WormController : MonoBehaviour
         {
             Debug.Log("Es steht etwas anderes");
         }
+        */
+
+        if(x>10){
+            Debug.Log("X ist größer oder gleich als 10");
+        }
+        else
+        {
+            Debug.Log("X ist kleiner oder gleich als 10");
+        }
+
     }
 
     // Update is called once per frame
