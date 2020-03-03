@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿using System.Net.Mime;
+using System;
+using System.Runtime;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +14,7 @@ public class WormController : MonoBehaviour
     public Rigidbody b;
     public Transform prefab;
     public Transform spawnPosition;
+    public int health = 10;
 
     public Rigidbody clone;
     
@@ -50,4 +54,22 @@ public class WormController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
     
+
+    void OnCollisionEnter(Collision collisionInfo)
+    {
+        if(collisionInfo.gameObject.tag == "Bullet"){
+
+        health = health - 4;
+        Debug.Log("Kollision findet statt");
+
+        }
+        else
+        {
+            Debug.Log("Andere Kollision");
+        }
+
+        if(collisionInfo.gameObject.tag == "Healthbox")
+        health = health + 4;
+    }
+
 }
