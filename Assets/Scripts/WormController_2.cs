@@ -63,10 +63,8 @@ public class WormController_2 : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
            health = health -1;
+           Destroy(collision.gameObject);
            Debug.Log ("Kollision mit Bullet findet statt"); 
-        }
-        else {
-            Debug.Log ("Kollision mit etwas anderem findet statt");
         }
 
 
@@ -75,9 +73,7 @@ public class WormController_2 : MonoBehaviour
            health = health +1;
            Debug.Log ("Kollision mit HealthBox findet statt"); 
         }
-        else {
-            Debug.Log ("Kollision mit etwas anderem findet statt");
-        }
+        
     }
 
     public void UpdateLife(){
