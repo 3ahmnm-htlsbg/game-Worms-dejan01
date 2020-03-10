@@ -4,6 +4,7 @@ using System.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class WormController_2 : MonoBehaviour
@@ -16,6 +17,7 @@ public class WormController_2 : MonoBehaviour
     public Transform spawnPosition;
     public int health = 10;
     public Rigidbody clone;
+    public Text text;
 
 
     private void Update()
@@ -46,6 +48,8 @@ public class WormController_2 : MonoBehaviour
             clone = Instantiate(b, spawnPosition.position, transform.rotation);
             clone.velocity = transform.TransformDirection(Vector3.left * -7);
         }
+
+        UpdateLife();
     }
 
     // Update is called once per frame
@@ -75,4 +79,10 @@ public class WormController_2 : MonoBehaviour
             Debug.Log ("Kollision mit etwas anderem findet statt");
         }
     }
+
+    public void UpdateLife(){
+        text.text = health.ToString();
+
+    }
+    
 }

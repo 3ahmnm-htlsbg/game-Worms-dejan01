@@ -19,6 +19,7 @@ public class WormController : MonoBehaviour
     public Transform spawnPosition;
     public int health = 10;
     public Rigidbody clone;
+    public Text text1;
 
     private void Update()
     {
@@ -50,18 +51,20 @@ public class WormController : MonoBehaviour
             clone.velocity = transform.TransformDirection(Vector3.left * -7);
         }
 
+        UpdateLife();
+
     }
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-    
     }
     
     
      void OnCollisionEnter(Collision collision)
     {
+
         if (collision.gameObject.tag == "Bullet")
         {
            health = health -1;
@@ -80,6 +83,10 @@ public class WormController : MonoBehaviour
         else {
             Debug.Log ("Kollision mit etwas anderem findet statt");
         }
+    }
+
+    public void UpdateLife(){
+        text1.text = health.ToString();
     }
     
 }
