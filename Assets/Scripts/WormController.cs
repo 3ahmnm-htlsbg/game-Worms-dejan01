@@ -51,6 +51,10 @@ public class WormController : MonoBehaviour
             clone.velocity = transform.TransformDirection(Vector3.left * -7);
         }
 
+        if(health < 1){
+            
+        }
+
         UpdateLife();
 
     }
@@ -69,19 +73,13 @@ public class WormController : MonoBehaviour
         {
            health = health -1;
            Debug.Log ("Kollision mit Bullet findet statt"); 
+           Destroy(collision.gameObject);
         }
-        else {
-            Debug.Log ("Kollision mit etwas anderem findet statt");
-        }
-
 
         if (collision.gameObject.tag == "Healthbox")
         {
            health = health +1;
            Debug.Log ("Kollision mit HealthBox findet statt"); 
-        }
-        else {
-            Debug.Log ("Kollision mit etwas anderem findet statt");
         }
     }
 
