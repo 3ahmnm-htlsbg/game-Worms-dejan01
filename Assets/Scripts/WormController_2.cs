@@ -1,16 +1,13 @@
-﻿using System.IO.IsolatedStorage;
-using System.Net.Mime;
+﻿using System.Net.Mime;
 using System;
 using System.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class WormController : MonoBehaviour
+
+public class WormController_2 : MonoBehaviour
 {
-
-    //Worm
     public float thrust = 1.0f;
     public float negativeThrust = 1.0f;
     public Rigidbody rb;
@@ -20,47 +17,44 @@ public class WormController : MonoBehaviour
     public int health = 10;
     public Rigidbody clone;
 
+
     private void Update()
     {
-        //Worm
-        if(Input.GetKeyDown(KeyCode.W))
+        if(Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.Log("W wird aufgerufen");
+            Debug.Log("up wird aufgerufen");
             rb.AddForce(0, thrust, 0, ForceMode.Impulse);
         }
-        if(Input.GetKeyDown(KeyCode.D))
+        if(Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Debug.Log("D wird aufgerufen");
+            Debug.Log("right wird aufgerufen");
             rb.AddForce(thrust, 0, 0, ForceMode.Impulse);
         }
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            Debug.Log("A wird aufgerufen");
+            Debug.Log("left wird aufgerufen");
             rb.AddForce(negativeThrust, 0, 0, ForceMode.Impulse);
         }
-         if(Input.GetKeyDown(KeyCode.S))
+         if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Debug.Log("S wird aufgerufen");
+            Debug.Log("down wird aufgerufen");
             rb.AddForce(0, negativeThrust, 0, ForceMode.Impulse);
         }
-          if(Input.GetKeyDown(KeyCode.Space))
+          if(Input.GetKeyDown(KeyCode.K))
         {
-            Debug.Log("Leertaste wird aufgerufen");
+            Debug.Log("k wird aufgerufen");
             clone = Instantiate(b, spawnPosition.position, transform.rotation);
             clone.velocity = transform.TransformDirection(Vector3.left * -7);
         }
-
     }
 
-
+    // Update is called once per frame
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-    
     }
-    
-    
-     void OnCollisionEnter(Collision collision)
+
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
@@ -81,5 +75,4 @@ public class WormController : MonoBehaviour
             Debug.Log ("Kollision mit etwas anderem findet statt");
         }
     }
-    
 }
